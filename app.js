@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 const allowedOrigins = process.env.CORS_ORIGIN ?
-    process.env.CORS_ORIGIN.split(',') : ['http://localhost:3000', 'http://localhost:5173'];
+    process.env.CORS_ORIGIN.split(',') : ['http://localhost:3000', 'http://localhost:5173', 'https://task-manager-client-tmgw.vercel.app'];
 console.log('Allowed Origins:', allowedOrigins); // Debug log
 
 app.use(cors({
