@@ -12,21 +12,9 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-const allowedOrigins = process.env.CORS_ORIGIN ?
-    process.env.CORS_ORIGIN.split(',') : ['http://localhost:3000', 'http://localhost:5173', 'https://task-manager-client-tmgw.vercel.app'];
-console.log('Allowed Origins:', allowedOrigins); // Debug log
-
 app.use(cors({
-    origin: (origin, callback) => {
-        console.log('Request Origin:', origin);
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            console.error(`Origin ${origin} not allowed by CORS`);
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
-    credentials: true
+    origin: '*', // Allow all origins
+    credentials: true // Keep this if you need cookies (optional for JWT)
 }));
 app.options('*', cors());
 app.use(express.json());
